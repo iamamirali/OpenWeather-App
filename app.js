@@ -11,9 +11,25 @@ const cityTemperature = document.querySelector('.city-temperature')
 const tempIcon = document.querySelector('.city-temp-icon')
 
 function htmlSetter(data) {
-    console.log(data);
     cityName.textContent = data.name
+
     cityStatus.textContent = data.weather[0].main
+    
     // gets kelvin and converts it to celcius
     cityTemperature.textContent = (data.main.temp - 273).toFixed(0)
+
+    // city tem icon changer function
+    tempIconSetter(data)
+}
+
+function tempIconSetter(data) {
+    switch (data.weather[0].main.toLowerCase()) {
+        case "clouds": tempIcon.src = './Images/cloud&sun.svg'
+        break;
+        case "sunny": tempIcon.src = './Images/sunny.svg'
+        break;
+        case "cloudy": tempIcon.src = './Images/cloud.svg'
+        break;
+        default: tempIcon.src = './Images/sunny.svg'
+    }
 }
