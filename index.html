@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.com/libraries/font-awesome">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
 <body>
     <main id="main">
         <div class="container">
+            <div class="city-select">
+                <select name="" id="city-list">
+                    <option selected disabled>City</option>
+                    <option value="tehran">Tehran</option>
+                    <option value="london">London</option>
+                    <option value="sydney">Sydney</option>
+                    <option value="oslo">Oslo</option>
+                </select>
+            </div>
             <div class="weather-card">
                 <div class="city-name"></div>
                 <div class="city-weather-status"></div>
                 <div class="city-temperature">
                 </div>
-                <!-- <div class="celsius-icon">0</div> -->
                 <div class="city-temp-icon-container">
                     <img class="city-temp-icon" src="" alt="">
                 </div>

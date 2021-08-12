@@ -1,9 +1,19 @@
-function getData() {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=tehran&appid=41f916b31af679c8c31a9e458d33d1a5`)
+const weatherCard = document.querySelector('.weather-card')
+
+// hides weather card from the start
+weatherCard.style.display = 'none'
+
+// selected city variable
+let selectedCity;
+
+function getData(city) {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=41f916b31af679c8c31a9e458d33d1a5`)
     .then(response => response.json())
     .then(data => htmlSetter(data))
+    // shows weather card
+    .then(weatherCard.style.display = 'block')
+
 }
-getData()
 
 const cityName = document.querySelector('.city-name')
 const cityStatus = document.querySelector('.city-weather-status')
@@ -32,4 +42,14 @@ function tempIconSetter(data) {
         break;
         default: tempIcon.src = './Images/sunny.svg'
     }
+}
+
+
+// list of cities 
+const cityList = document.getElementById('city-list')
+
+// city changer function, which calls fetch after choosing a city
+cityList.onchange = () => {
+    selectedCity = cityList[cityList.selectedIndex].value
+    getData(selectedCity)
 }
