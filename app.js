@@ -1,5 +1,5 @@
 function getData() {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=tehran&appid=41f916b31af679c8c31a9e458d33d1a5')
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=tehran&appid=41f916b31af679c8c31a9e458d33d1a5`)
     .then(response => response.json())
     .then(data => htmlSetter(data))
 }
@@ -11,14 +11,14 @@ const cityTemperature = document.querySelector('.city-temperature')
 const tempIcon = document.querySelector('.city-temp-icon')
 
 function htmlSetter(data) {
-    cityName.textContent = data.name
+    cityName.innerHTML = `<img src="./Images/pin.svg" class="location-icon" alt="">${data.name}`
 
     cityStatus.textContent = data.weather[0].main
     
     // gets kelvin and converts it to celcius
-    cityTemperature.textContent = (data.main.temp - 273).toFixed(0)
+    cityTemperature.innerHTML = (data.main.temp - 273).toFixed(0)
 
-    // city tem icon changer function
+    // city temp icon changer function
     tempIconSetter(data)
 }
 
