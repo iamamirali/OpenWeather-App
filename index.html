@@ -11,15 +11,20 @@
 <body>
     <main id="main">
         <div class="container">
+            <h1 class="app-title">Weather App</h1>
+
             <div class="city-select">
-                <select name="" id="city-list">
-                    <option selected disabled>City</option>
+                <select name="city-list" id="city-list">
+                    <option selected disabled hidden>Choose City</option>
                     <option value="tehran">Tehran</option>
                     <option value="london">London</option>
                     <option value="sydney">Sydney</option>
                     <option value="oslo">Oslo</option>
+                    <option value="ankara">Ankara</option>
+                    <option value="tokyo">Tokyo</option>
                 </select>
             </div>
+
             <div class="weather-card">
                 <div class="city-name"></div>
                 <div class="city-weather-status"></div>

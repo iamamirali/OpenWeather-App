@@ -13,25 +13,64 @@ body{
 .container{
     display: flex;
     min-height: 100vh;
-    justify-content: center;
+    flex-direction: column;
+    // justify-content: center;
     align-items: center;
+}
+
+.app-title{
+    color: $baseColor;
+    margin: {
+        top: 40px;
+        bottom: 10px;
+    }
+    padding: 20px;
+    border-radius: 20px;
+    background-color: $baseBackground;
+    box-shadow: $baseBoxShadow;
+    font-size: 2.5rem;
+}
+
+#city-list{
+    padding: 15px;
+    background-color: $baseBackground;
+    border-radius: 15px;
+    color: $baseColor;
+    border: none;
+    box-shadow: $baseBoxShadow;
+    font: {
+        size: 1.5rem;
+    }
+    margin: {
+        top: 20px;
+        bottom: 30px;
+    }
+    transition: background 0.15s;
+}
+
+#city-list:hover {
+    background-color: $btnHoverColor;
+}
+
+#city-list option {
+    border: none;
 }
 
 .weather-card{
     background-color: $baseBackground;
     width: 27%;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.863),-3px -3px 10px rgba(255, 255, 255, 0.336);
-    padding: 20px;
+    box-shadow: $baseBoxShadow;
+    padding: 10px;
     text-align: center;
     border-radius: 35px;
 }
 
 .city-name{
     color: $baseColor;
-    margin: 25px 0px;
+    margin: 20px 0px;
     font: {
         weight: bold;
-        size: 1.35rem;
+        size: 1.4rem;
     }
 }
 
@@ -43,7 +82,7 @@ body{
 
 .city-weather-status{
     @extend .city-name;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
 .city-temperature{
