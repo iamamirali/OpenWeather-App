@@ -3,61 +3,72 @@ const weatherCard = document.querySelector('.weather-card')
 // hides weather card from the start
 weatherCard.style.display = 'none'
 
+// data loading variable
 let loading = false
 
 // selected city variable
 let selectedCity;
 
 function getData(city) {
+    // loading is shown until data is loaded compeletely
+    loading = true
+    loadingSetter()
+
     // shows weather card
     weatherCard.style.display = 'block'
+
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=41f916b31af679c8c31a9e458d33d1a5`)
     .then(response => response.json())
-    .then(data => htmlSetter(data))
+    .then(data => {
+        loading = false
+        loadingSetter(data)
+    })
 }
 
-
-function loadingSetter() {
+// shows loading until data is loaded compeletely
+function loadingSetter(data) {
    if(loading) {
-    weatherCard.innerHTML = 'loading'
-   } else {
-    weatherCard.innerHTML = 'not loading'
+    weatherCard.innerHTML = `<div class="loading"><div/>`
+   } else  {
+    htmlSetter(data)
    }
 }
 
-const cityName = document.querySelector('.city-name')
-const cityStatus = document.querySelector('.city-weather-status')
-const cityTemperature = document.querySelector('.city-temperature')
-const tempIcon = document.querySelector('.city-temp-icon')
-
 function htmlSetter(data) {
-    console.log(loading);
-    cityName.innerHTML = `<img src="./Images/pin.svg" class="location-icon" alt="">${data.name}`
-
-    // city status content
-    cityStatus.textContent = data.weather[0].main
-    
-    // gets kelvin and converts it to celcius
-    cityTemperature.innerHTML = (data.main.temp - 273).toFixed(0)
-
-    // city temp icon changer function
-    tempIconSetter(data)
-}
-
-function tempIconSetter(data) {
+    // status img src value
+    let statusImgSrc;
+    // swithching status src 
     switch (data.weather[0].main.toLowerCase()) {
-        case "clouds": tempIcon.src = './Images/cloud&sun.svg'
+        case "clouds": statusImgSrc = './Images/cloud&sun.svg'
         break;
-        case "sunny": tempIcon.src = './Images/sunny.svg'
+        case "clear": statusImgSrc = './Images/sunny.svg'
         break;
-        case 'rain': tempIcon.src = './Images/rain.svg'
+        case 'rain': statusImgSrc = './Images/rain.svg'
         break;
-        case "cloudy": tempIcon.src = './Images/cloud.svg'
+        case "cloudy": statusImgSrc = './Images/cloud.svg'
         break;
-        default: tempIcon.src = './Images/sunny.svg'
+        default: statusImgSrc = './Images/sunny.svg'
     }
-}
-
+    
+    // setting card content with given data
+    weatherCard.innerHTML = `
+        <div class="city-name">
+        <img src="./Images/pin.svg" class="location-icon" alt="">
+        ${data.name}
+        </div>
+        
+        <div class="city-weather-status">
+        ${data.weather[0].main}
+        </div>
+        
+        <div class="city-temperature">
+            ${(data.main.temp - 273).toFixed(0)}
+        </div>
+        
+        <div class="city-temp-icon-container">
+        <img class="city-temp-icon" src=${statusImgSrc} alt="">
+        </div>`
+    }
 
 // list of cities 
 const cityList = document.getElementById('city-list')

@@ -76,7 +76,7 @@ body{
 
 .location-icon{
     color: $baseColor;
-    margin-right: 2px;
+    margin-right: -5px;
     width: 5%
 }
 
@@ -118,3 +118,22 @@ body{
     margin-bottom: 20px;
     width: 15%;
 }
+
+.loading {
+    border: 25px solid $baseBackground;
+    border: {
+        top: 25px solid $baseColor; 
+        bottom: 25px solid $baseColor; 
+        radius: 50%;
+    }
+    box-shadow: $baseBoxShadow;
+    margin: 20px auto;
+    width: 100px;
+    height: 100px;
+    animation: spin 0.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
