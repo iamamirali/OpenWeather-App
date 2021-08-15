@@ -35,20 +35,8 @@ function loadingSetter(data) {
 }
 
 function htmlSetter(data) {
-    // status img src value
-    let statusImgSrc;
     // swithching status src 
-    switch (data.weather[0].main.toLowerCase()) {
-        case "clouds": statusImgSrc = './Images/cloud&sun.svg'
-        break;
-        case "clear": statusImgSrc = './Images/sunny.svg'
-        break;
-        case 'rain': statusImgSrc = './Images/rain.svg'
-        break;
-        case "cloudy": statusImgSrc = './Images/cloud.svg'
-        break;
-        default: statusImgSrc = './Images/sunny.svg'
-    }
+    let statusImgSrc = toggleStatus(data)
     
     // setting card content with given data
     weatherCard.innerHTML = `
@@ -68,6 +56,22 @@ function htmlSetter(data) {
         <div class="city-temp-icon-container">
         <img class="city-temp-icon" src=${statusImgSrc} alt="">
         </div>`
+    }
+
+    function toggleStatus(data) {
+        switch (data.weather[0].main.toLowerCase()) {
+            case "clouds": statusImgSrc = './Images/cloud&sun.svg'
+            break;
+            case "clear": statusImgSrc = './Images/sunny.svg'
+            break;
+            case 'rain': statusImgSrc = './Images/rain.svg'
+            break;
+            case "cloudy": statusImgSrc = './Images/cloud.svg'
+            break;
+            default: statusImgSrc = './Images/sunny.svg'
+        }
+        console.log(statusImgSrc);
+        return statusImgSrc
     }
 
 // list of cities 
