@@ -150,4 +150,32 @@ body {
             transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 468px) {
+  .app-title {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+  }
+  #city-list {
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+  .weather-card {
+    width: 80%;
+    padding: 10px;
+  }
+  .location-icon {
+    margin-right: -5px;
+    margin-bottom: 1px;
+    width: 5.5%;
+  }
+  .city-weather-status {
+    margin-bottom: 0px;
+  }
+  .city-temperature {
+    margin-top: 15px;
+  }
+}
 /*# sourceMappingURL=style.css.map */
