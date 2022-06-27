@@ -1,84 +1,57 @@
-const weatherCard = document.querySelector('.weather-card')
-
+"use strict";
+exports.__esModule = true;
+var weatherCard = document.querySelector('.weather-card');
 // hides weather card from the start
-weatherCard.style.display = 'none'
-
-// data loading variable
-let loading = false
-
-// selected city variable
-let selectedCity;
-
+weatherCard.setAttribute('style', 'display: none');
+var loading = false;
+var selectedCity;
 function getData(city) {
     // loading is shown until data is loaded compeletely
-    loading = true
-    loadingSetter()
-
-    // shows weather card
-    weatherCard.style.display = 'block'
-
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=41f916b31af679c8c31a9e458d33d1a5`)
-    .then(response => response.json())
-    .then(data => {
-        loading = false
-        loadingSetter(data)
-    })
+    loading = true;
+    loadingSetter(undefined);
+    weatherCard.setAttribute('style', 'display: block');
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=".concat(city, "&appid=41f916b31af679c8c31a9e458d33d1a5"))
+        .then(function (response) { return response.json(); })
+        .then(function (data) {
+        loading = false;
+        loadingSetter(data);
+    });
 }
-
 // shows loading until data is loaded compeletely
 function loadingSetter(data) {
-   if(loading) {
-    weatherCard.innerHTML = `<div class="loading"><div/>`
-   } else  {
-    htmlSetter(data)
-   }
+    if (loading) {
+        weatherCard.innerHTML = "<div class=\"loading\"><div/>";
+    }
+    else {
+        htmlSetter(data);
+    }
 }
-
 function htmlSetter(data) {
-    // swithching status src 
-    let statusImgSrc = toggleStatus(data)
-    
-    // setting card content with given data
-    weatherCard.innerHTML = `
-        <div class="city-name">
-        <img src="./Images/pin.svg" class="location-icon" alt="">
-        ${data.name}
-        </div>
-        
-        <div class="city-weather-status">
-        ${data.weather[0].main}
-        </div>
-        
-        <div class="city-temperature">
-            ${(data.main.temp - 273).toFixed(0)}
-        </div>
-        
-        <div class="city-temp-icon-container">
-        <img class="city-temp-icon" src=${statusImgSrc} alt="">
-        </div>`
-    }
-
-    function toggleStatus(data) {
-        switch (data.weather[0].main.toLowerCase()) {
-            case "clouds": statusImgSrc = './Images/cloud&sun.svg'
-            break;
-            case "clear": statusImgSrc = './Images/sunny.svg'
-            break;
-            case 'rain': statusImgSrc = './Images/rain.svg'
-            break;
-            case "cloudy": statusImgSrc = './Images/cloud.svg'
-            break;
-            default: statusImgSrc = './Images/sunny.svg'
-        }
-        console.log(statusImgSrc);
-        return statusImgSrc
-    }
-
-// list of cities 
-const cityList = document.getElementById('city-list')
-
-// city changer function, which calls fetch after choosing a city
-cityList.onchange = () => {
-    selectedCity = cityList[cityList.selectedIndex].value
-    getData(selectedCity)
+    var statusImgSrc = toggleStatus(data);
+    weatherCard.innerHTML = "\n        <div class=\"city-name\">\n        <img src=\"./Images/pin.svg\" class=\"location-icon\" alt=\"\">\n        ".concat(data.name, "\n        </div>\n        \n        <div class=\"city-weather-status\">\n        ").concat(data.weather[0].main, "\n        </div>\n        \n        <div class=\"city-temperature\">\n            ").concat((data.main.temp - 273).toFixed(0), "\n        </div>\n        \n        <div class=\"city-temp-icon-container\">\n        <img class=\"city-temp-icon\" src=").concat(statusImgSrc, " alt=\"\">\n        </div>");
 }
+function toggleStatus(data) {
+    var imgSrc;
+    switch (data.weather[0].main.toLowerCase()) {
+        case "clouds":
+            imgSrc = './Images/cloud&sun.svg';
+            break;
+        case "clear":
+            imgSrc = './Images/sunny.svg';
+            break;
+        case 'rain':
+            imgSrc = './Images/rain.svg';
+            break;
+        case "cloudy":
+            imgSrc = './Images/cloud.svg';
+            break;
+        default: imgSrc = './Images/sunny.svg';
+    }
+    return imgSrc;
+}
+var cityList = document.getElementById('city-list');
+// city changer function, which calls fetch after choosing a city
+cityList.onchange = function () {
+    selectedCity = cityList[cityList.selectedIndex].value;
+    getData(selectedCity);
+};
