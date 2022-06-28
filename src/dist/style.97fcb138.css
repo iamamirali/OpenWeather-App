@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(65, 65, 65);
+  font-family: tahoma;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-title {
+  color: rgb(233, 233, 233);
+  margin-top: 40px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgb(65, 65, 65);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.863), -2px -2px 10px rgba(255, 255, 255, 0.336);
+  font-size: 2.5rem;
+}
+
+#city-list {
+  padding: 15px;
+  outline: none;
+  background-color: rgb(65, 65, 65);
+  border-radius: 15px;
+  color: rgb(233, 233, 233);
+  border: none;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.863), -2px -2px 10px rgba(255, 255, 255, 0.336);
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  transition: background 0.15s;
+}
+
+#city-list:hover {
+  background-color: rgb(54, 54, 54);
+}
+
+#city-list option {
+  border: none;
+}
+
+.weather-card {
+  background-color: rgb(65, 65, 65);
+  width: 27%;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.863), -2px -2px 10px rgba(255, 255, 255, 0.336);
+  padding: 10px;
+  text-align: center;
+  border-radius: 35px;
+}
+
+.city-name, .city-temperature, .city-weather-status {
+  color: rgb(233, 233, 233);
+  margin: 20px 0px;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.location-icon {
+  color: rgb(233, 233, 233);
+  margin-right: -5px;
+  width: 5%;
+}
+
+.city-weather-status {
+  font-size: 0.95rem;
+}
+
+.city-temperature {
+  position: relative;
+  margin-bottom: 5px;
+  padding: 20px;
+  margin-right: 20%;
+  font-size: 3.5rem;
+  font-weight: 100;
+}
+
+.city-temperature::before {
+  position: absolute;
+  top: 8%;
+  left: 61%;
+  margin-left: 2%;
+  font-size: 3rem;
+  content: "0";
+}
+
+.city-temperature::after {
+  position: absolute;
+  margin-left: 10px;
+  left: 70%;
+  content: "C";
+}
+
+.city-temp-icon {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  width: 15%;
+}
+
+.loading {
+  border: 25px solid rgb(65, 65, 65);
+  border-top: 25px solid rgb(233, 233, 233);
+  border-bottom: 25px solid rgb(233, 233, 233);
+  border-radius: 50%;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.863), -2px -2px 10px rgba(255, 255, 255, 0.336);
+  margin: 20px auto;
+  width: 100px;
+  height: 100px;
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 468px) {
+  .app-title {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+  }
+  #city-list {
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+  .weather-card {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  .location-icon {
+    margin-right: -5px;
+    margin-bottom: 1px;
+    width: 5.5%;
+  }
+  .city-weather-status {
+    margin-bottom: 0px;
+  }
+  .city-temperature {
+    margin-top: 15px;
+  }
+}
+
+/*# sourceMappingURL=/style.97fcb138.css.map */

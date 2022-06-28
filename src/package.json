@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "parcel-plugin-static-files-copy": "^2.6.0",
+    "sass": "^1.53.0"
+  }
+}
