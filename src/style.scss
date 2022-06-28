@@ -1,0 +1,197 @@
+@import './assets/variables';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $baseBackground;
+    font-family: $baseFont;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-title {
+    color: $baseColor;
+
+    margin: {
+        top: 40px;
+        bottom: 10px;
+    }
+
+    padding: 20px;
+    border-radius: 20px;
+    background-color: $baseBackground;
+    box-shadow: $baseBoxShadow;
+    font-size: 2.5rem;
+}
+
+#city-list {
+    padding: 15px;
+    outline: none;
+    background-color: $baseBackground;
+    border-radius: 15px;
+    color: $baseColor;
+    border: none;
+    box-shadow: $baseBoxShadow;
+
+    font: {
+        size: 1.5rem;
+    }
+
+    margin: {
+        top: 20px;
+        bottom: 30px;
+    }
+
+    transition: background 0.15s;
+}
+
+#city-list:hover {
+    background-color: $btnHoverColor;
+}
+
+#city-list option {
+    border: none;
+}
+
+.weather-card {
+    background-color: $baseBackground;
+    width: 27%;
+    box-shadow: $baseBoxShadow;
+    padding: 10px;
+    text-align: center;
+    border-radius: 35px;
+}
+
+.city-name {
+    color: $baseColor;
+    margin: 20px 0px;
+
+    font: {
+        weight: bold;
+        size: 1.4rem;
+    }
+}
+
+.location-icon {
+    color: $baseColor;
+    margin-right: -5px;
+    width: 5%
+}
+
+.city-weather-status {
+    @extend .city-name;
+    font-size: 0.95rem;
+}
+
+.city-temperature {
+    position: relative;
+    @extend .city-name;
+    margin-bottom: 5px;
+    padding: 20px;
+    margin-right: 20%;
+
+    font: {
+        size: 3.5rem;
+        weight: 100;
+    }
+}
+
+.city-temperature::before {
+    position: absolute;
+    top: 8%;
+    left: 61%;
+    margin-left: 2%;
+    font-size: 3rem;
+    content: '0';
+
+}
+
+.city-temperature::after {
+    position: absolute;
+    margin-left: 10px;
+    left: 70%;
+    content: 'C';
+
+}
+
+.city-temp-icon {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    width: 15%;
+}
+
+.loading {
+    border: 25px solid $baseBackground;
+
+    border: {
+        top: 25px solid $baseColor;
+        bottom: 25px solid $baseColor;
+        radius: 50%;
+    }
+
+    box-shadow: $baseBoxShadow;
+    margin: 20px auto;
+    width: 100px;
+    height: 100px;
+    animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+@media screen and (max-width: 468px) {
+    .app-title {
+        margin: {
+            top: 25px;
+            bottom: 10px;
+        }
+
+        font-size: 2.2rem;
+    }
+
+    #city-list {
+        padding: 15px;
+
+        margin: {
+            top: 15px;
+            bottom: 25px;
+        }
+    }
+
+    .weather-card {
+        width: 80%;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .location-icon {
+        margin-right: -5px;
+        margin-bottom: 1px;
+        width: 5.5%
+    }
+
+    .city-weather-status {
+        margin-bottom: 0px;
+    }
+
+    .city-temperature {
+        margin-top: 15px;
+    }
+
+}
